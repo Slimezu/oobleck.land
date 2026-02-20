@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Inbox</title>
+</head>
+<body>
+  <h1>Inbox</h1>
+  <div id="emails"></div>
+
+  <script>
+    fetch("https://your-worker-name.your-subdomain.workers.dev/get-mails")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("emails");
+        data.reverse().forEach(mail => {
+          const div = document.createElement("div");
+          div.style.border = "1px solid black";
+          div.style.margin = "10px";
+          div.style.padding = "10px";
+
+          div.innerHTML = `
+            <strong>From:</strong> ${mail.from}<br>
+            <strong>Subject:</strong> ${mail.subject}<br>
+            <p>${mail.text}</p>
+          `;
+
+          container.appendChild(div);
+        });
+      });
+  </script>
+</body>
+</html>
