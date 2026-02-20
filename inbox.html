@@ -8,7 +8,7 @@
   <div id="emails"></div>
 
   <script>
-    fetch("https://your-worker-name.your-subdomain.workers.dev/get-mails")
+    fetch("https://api-email.daslimezu.workers.dev/get-mails")
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById("emails");
